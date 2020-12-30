@@ -30,7 +30,7 @@ def read_triples(path: str):
     #         triples += [(s.strip(), p.strip(), o.strip())]
     # return triples
     # df = df.astype(str)
-    return df.values.tolist()[:int(fraction*len(df))]
+    return df.values.tolist()
 
 
 def read_mentions(path):
