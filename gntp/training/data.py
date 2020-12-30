@@ -63,11 +63,11 @@ class Data:
             dev_labeled_triples = gntp.read_labeled_triples(self.dev_path) if self.dev_path else []
             test_labeled_triples = gntp.read_labeled_triples(self.test_path) if self.test_path else []
 
-            self.dev_triples = [triple for (triple, label) in dev_labeled_triples]
-            self.test_triples = [triple for (triple, label) in test_labeled_triples]
+            self.dev_triples = [triple for triple in dev_labeled_triples]
+            self.test_triples = [triple for triple in test_labeled_triples]
 
-            self.dev_labels = [label for (triple, label) in dev_labeled_triples]
-            self.test_labels = [label for (triple, label) in test_labeled_triples]
+            self.dev_labels = [1 for triple in dev_labeled_triples]
+            self.test_labels = [1 for triple in test_labeled_triples]
 
         self.all_triples = self.train_triples + self.dev_triples + self.test_triples
 

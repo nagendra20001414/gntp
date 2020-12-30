@@ -21,7 +21,7 @@ def iopen(file, *args, **kwargs):
     return f(file, *args, **kwargs)
 
 
-def read_triples(path: str):
+def read_triples(path):
     # triples = []
     df = pd.read_csv(path, sep='\t', names=['s', 'p', 'o'], dtype={'s':str, 'p':str, 'o':str})
     # with open(path, 'rt') as f:
@@ -45,12 +45,15 @@ def read_mentions(path):
 
 
 def read_labeled_triples(path):
-    labeled_triples = []
-    with iopen(path, 'rt') as f:
-        for line in f.readlines():
-            s, p, o, l = line.split()
-            labeled_triples += [((s.strip(), p.strip(), o.strip()), int(l.strip()))]
-    return labeled_triples
+    # triples = []
+    df = pd.read_csv(path, sep='\t', names=['s', 'p', 'o'], dtype={'s':str, 'p':str, 'o':str})
+    # with open(path, 'rt') as f:
+    #     for line in f.readlines():
+    #         s, p, o = line.split()
+    #         triples += [(s.strip(), p.strip(), o.strip())]
+    # return triples
+    # df = df.astype(str)
+    return df.values.tolist()
 
 
 def triples_to_vectors(triples, entity_to_idx, predicate_to_idx):
